@@ -37,22 +37,7 @@ haskell_register_ghc_bindists(
     version = "8.4.4",
 )
 
-github_archive(
-    name = "ai_formation_hazel",
-    repo = "FormationAI/hazel",
-    sha256 = "605c83e0bf54c0517413096403ccb7799d6278fdeffdbe1555d11265e8165b17",
-    version = "ecf380e97cc2e2114f359c89e4d65cd9c6b0ca22",
-)
-
-load("@ai_formation_hazel//:hazel.bzl", "hazel_repositories")
 load("//third_party/haskell:packages.bzl", "core_packages", "packages")
-
-# TODO(iphydf): Enable this once hazel is good enough to do automatically what
-# we do manually in third_party/haskell.
-#hazel_repositories(
-#    core_packages = core_packages,
-#    packages = packages,
-#)
 
 [new_local_repository(
     name = "haskell_%s" % pkg.replace("-", "_"),
