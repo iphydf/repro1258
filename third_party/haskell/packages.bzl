@@ -8,9 +8,9 @@ core_packages = (
 packages = (
     {
         "cryptohash-sha1": struct(
-            version = "0.11.100.1",
+            version = "0.11.100.0",
             sha256 =
-                "3c79af33542512442f8f87f6abb1faef7cd43bbfb2859260a33251d861eb0dab",
+                "24a6853f180ec505a44a6b93bd9272d4ac5e21dca254d89176bce4147dfafecf",
         ),
         "github": struct(
             version = "0.25",

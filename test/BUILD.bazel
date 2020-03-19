@@ -1,0 +1,34 @@
+load("@rules_haskell//haskell:defs.bzl", "haskell_library", "haskell_test")
+
+cc_library(
+    name = "cbits",
+    srcs = glob(["*.c"]),
+    copts = ["-Wno-unused-label"],
+    deps = ["@haskell_rts//:rts"],
+)
+
+haskell_library(
+    name = "testlib",
+    srcs = ["Lib.hs"],
+    compiler_flags = [
+        "-Wall",
+        "-Werror",
+    ],
+    deps = [
+        ":cbits",
+        "@haskell_base//:base",
+    ],
+)
+
+haskell_test(
+    name = "test",
+    srcs = ["Main.hs"],
+    compiler_flags = [
+        "-Wall",
+        "-Werror",
+    ],
+    deps = [
+        ":testlib",
+        "@haskell_base//:base",
+    ],
+)

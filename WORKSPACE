@@ -22,8 +22,8 @@ github_archive(
 github_archive(
     name = "rules_haskell",
     repo = "tweag/rules_haskell",
-    sha256 = "2a8503af332e685eb3602f1041016b4bbf7509c1029dc519f6b9e059e9a6d5db",
-    version = "b41234677c9381982aae98098fb473a5b733c945",
+    sha256 = "d19f234334807895329179a2a5bc6ddac4893b2fbd085cece7d820e870e5fb00",
+    version = "d59ccf9e7785553fd392924fb083d926c7e01134",
 )
 
 load("@rules_haskell//haskell:ghc_bindist.bzl", "haskell_register_ghc_bindists")
@@ -34,7 +34,7 @@ haskell_repositories()
 
 # This repository rule creates @ghc repository.
 haskell_register_ghc_bindists(
-    version = "8.4.4",
+    version = "8.6.5",
 )
 
 load("//third_party/haskell:packages.bzl", "core_packages", "packages")
@@ -44,11 +44,3 @@ load("//third_party/haskell:packages.bzl", "core_packages", "packages")
     build_file = "third_party/haskell/BUILD." + pkg,
     path = "/usr",
 ) for pkg in core_packages.keys()]
-
-[new_cabal_package(
-    package = "%s-%s" % (
-        pkg,
-        data.version,
-    ),
-    sha256 = data.sha256,
-) for pkg, data in packages.items()]

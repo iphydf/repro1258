@@ -6,16 +6,16 @@ cache:
     - $HOME/.cache/bazel
 
 before_install:
-  - wget https://github.com/bazelbuild/bazel/releases/download/2.1.1/bazel-2.1.1-installer-linux-x86_64.sh
-  - sha256sum -c tools/bazel-2.1.1-installer-linux-x86_64.sh.sha256
-  - chmod +x bazel-2.1.1-installer-linux-x86_64.sh
-  - ./bazel-2.1.1-installer-linux-x86_64.sh --user
+  - wget https://github.com/bazelbuild/bazel/releases/download/2.2.0/bazel-2.2.0-installer-linux-x86_64.sh
+  - sha256sum -c tools/bazel-2.2.0-installer-linux-x86_64.sh.sha256
+  - chmod +x bazel-2.2.0-installer-linux-x86_64.sh
+  - ./bazel-2.2.0-installer-linux-x86_64.sh --user
   - export PATH=$HOME/bin:$PATH
 
 install: echo 'build --jobs=4 --curses=no --verbose_failures' >> $HOME/.bazelrc
 
 script:
-  - bazel build @haskell_github//:github
+  - bazel test //test/...
 
 before_cache: rm -rf $HOME/.cache/bazel/_bazel_$USER/install
 
